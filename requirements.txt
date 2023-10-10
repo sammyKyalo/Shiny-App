@@ -6,4 +6,4 @@ yfinance==0.2.31
 plotly==2.4.1
 statsmodels
 matplotlib.pyplot
-seaborn==12.2 
+seaborn
