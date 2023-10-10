@@ -5,5 +5,5 @@ passlib==1.7.4
 yfinance==0.2.31
 plotly==2.4.1
 statsmodels
-matplotlib.pyplot
+matplotlib
 seaborn
