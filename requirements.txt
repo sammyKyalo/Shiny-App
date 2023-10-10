@@ -2,7 +2,8 @@ streamlit==1.27.2
 pandas==2.0
 numpy==1.26
 passlib==1.7.4
-
-
-
-
+yfinance==0.2.31
+plotly==2.4.1
+statsmodels==0.15.0
+matplotlib.pyplot==3.8.0
+seaborn==12.2 
