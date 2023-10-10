@@ -7,3 +7,8 @@ plotly==2.4.1
 statsmodels
 matplotlib
 seaborn
+plotly.graph_objects
+plotly.express
+pmdarima
+
+
