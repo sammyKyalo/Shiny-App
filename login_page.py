@@ -73,15 +73,7 @@ if selection == "Login":
             st.success(f'Welcome, {username}!')
             
             # Run shiny.py and display the output here
-            subprocess.run(["streamlit", "run", "shiny.py"])
-            st.session_state.username_key = ""  
-            st.session_state.password_key = ""  
-
-            login_button = False
-        else:
-            st.error('Invalid credentials. Please try again.')
-            st.info('If you don\'t have an account, please sign up.')
-
+            subprocess.run(["streamlit", "run", "tesla.py"])
 # Signup Section
 else:
     st.header("Sign Up")
