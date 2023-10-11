@@ -1,8 +1,6 @@
 import streamlit as st
 import sqlite3
 from passlib.hash import pbkdf2_sha256
-import subprocess
-import webbrowser
 import time
 
 # Create a connection to the SQLite database
@@ -20,33 +18,6 @@ c.execute('''
 conn.commit()
 
 st.set_page_config(page_title='TESLA Stock Analysis Login Page', page_icon=':chart_with_upwards_trend:')
-custom_css = """
-<style>
-.zoom-text {
-    font-family: 'Arial', sans-serif;
-    font-size: 50px;
-    text-align: center;
-    position: relative;
-    color: #ff4500; /* Tesla brand color */
-    text-transform: uppercase;
-    animation: zoom 5s infinite alternate ease-in-out;
-    }
-
-    @keyframes zoom {
-        0% {
-            transform: scale(1);
-        }
-        100% {
-        transform: scale(1.1);
-        }
-    }
-</style>
-"""
-
-# Display the zooming in and out title
-st.markdown(custom_css, unsafe_allow_html=True)
-st.markdown('<div class="zoom-text">TESLA Stock Analysis and Prediction</div>', unsafe_allow_html=True)
-
 
 # Functions for database interactions
 def create_user(username, email, password):
@@ -61,13 +32,15 @@ def verify_user(username, password):
         return True
     return False
 
-# Selectbox for Login and Sign Up options
-selection = st.selectbox("Select Option(sign up/login)", ["Login", "Sign Up"])
-
 def is_link_expired(last_activity_time):
     current_time = time.time()
     elapsed_time = current_time - last_activity_time
     return elapsed_time > 300
+
+st.markdown('<div class="zoom-text">TESLA Stock Analysis and Prediction</div>', unsafe_allow_html=True)
+
+# Selectbox for Login and Sign Up options
+selection = st.selectbox("Select Option(sign up/login)", ["Login", "Sign Up"])
 
 # Login Section
 if selection == "Login":
@@ -83,9 +56,9 @@ if selection == "Login":
             # Run shiny.py and display the output here
             session_time = time.time()
 
-            # Display the link only if it has not expired
+            # Redirect to the analysis page after 5 seconds if the link has not expired
             if not is_link_expired(session_time):
-                st.markdown(f'[Click here to go to the analysis page](https://telsa-stock-analysis.streamlit.app/)')
+                st.markdown('<script>window.location.href = "https://telsa-stock-analysis.streamlit.app/";</script>', unsafe_allow_html=True)
             else:
                 st.warning('Link has expired. Please login again to generate a new link.')
         else:
@@ -102,4 +75,4 @@ else:
         st.success(f'Account created for {new_username}! You can now login.')
 
 # Close the database connection
-conn.close()
+# conn.close()  # Do not close the connection here to keep it open throughout the app's lifetime
