@@ -86,7 +86,8 @@ if selection == "Login":
               st.markdown(f'[Click here to go to the analysis page](https://telsa-stock-analysis.streamlit.app/)')
             else:
                st.warning('Link has expired. Please login again to generate a new link.')
-    
+    else:
+        st.error('Invalid username or password. Please try again or sign up.')
 # Signup Section
 else:
     st.header("Sign Up")
