@@ -9,5 +9,5 @@ matplotlib
 seaborn
 pmdarima
 ta==0.7.0
-webbrowser
+
 
