@@ -73,7 +73,8 @@ if selection == "Login":
             st.success(f'Welcome, {username}!')
             
             # Run shiny.py and display the output here
-            webbrowser.open("https://tesla-stock-analysis.streamlit.app/")
+            st.markdown(f'[Click here to go to the analysis page](https://tesla-stock-analysis.streamlit.app/)')
+
 
 
 # Signup Section
