@@ -2,7 +2,7 @@ import streamlit as st
 import sqlite3
 from passlib.hash import pbkdf2_sha256
 import subprocess
-
+import webbrowser
 
 # Create a connection to the SQLite database
 conn = sqlite3.connect('users.db')
@@ -73,7 +73,9 @@ if selection == "Login":
             st.success(f'Welcome, {username}!')
             
             # Run shiny.py and display the output here
-            subprocess.run(["streamlit", "run", "tesla.py"])
+            webbrowser.open("https://tesla-stock-analysis.streamlit.app/")
+
+
 # Signup Section
 else:
     st.header("Sign Up")
