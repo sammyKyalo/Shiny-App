@@ -82,15 +82,11 @@ if selection == "Login":
             session_time = time.time()
 
         # Display the link only if it has not expired
-        if not is_link_expired(session_time):
-            st.markdown(f'[Click here to go to the analysis page](https://tesla-stock-analysis.streamlit.app/)')
-        else:
-            st.warning('Link has expired. Please login again to generate a new link.')
-    else:
-        st.error('Invalid username or password. Please try again.')
-
-
-
+            if not is_link_expired(session_time):
+              st.markdown(f'[Click here to go to the analysis page](https://tesla-stock-analysis.streamlit.app/)')
+            else:
+               st.warning('Link has expired. Please login again to generate a new link.')
+    
 # Signup Section
 else:
     st.header("Sign Up")
