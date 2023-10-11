@@ -87,7 +87,7 @@ if selection == "Login":
             else:
                st.warning('Link has expired. Please login again to generate a new link.')
     else:
-        st.error('Invalid username or password. Please try again or sign up.')
+        st.warning('Invalid username or password. Please try again or sign up.')
 # Signup Section
 else:
     st.header("Sign Up")
