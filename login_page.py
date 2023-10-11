@@ -74,5 +74,3 @@ else:
         create_user(new_username, new_email, new_password)
         st.success(f'Account created for {new_username}! You can now login.')
 
-# Close the database connection
-# conn.close()  # Do not close the connection here to keep it open throughout the app's lifetime
