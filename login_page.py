@@ -43,9 +43,6 @@ custom_css = """
 </style>
 """
 
-# Display the zooming in and out title
-st.markdown(custom_css, unsafe_allow_html=True)
-st.markdown('<div class="zoom-text">TESLA Stock Analysis and Prediction</div>', unsafe_allow_html=True)
 # Functions for database interactions
 def create_user(username, email, password):
     hashed_password = pbkdf2_sha256.hash(password)
