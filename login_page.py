@@ -3,6 +3,7 @@ import sqlite3
 from passlib.hash import pbkdf2_sha256
 import subprocess
 import webbrowser
+import time
 
 # Create a connection to the SQLite database
 conn = sqlite3.connect('users.db')
@@ -63,6 +64,11 @@ def verify_user(username, password):
 # Selectbox for Login and Sign Up options
 selection = st.selectbox("Select Option(sign up/login)", ["Login", "Sign Up"])
 
+def is_link_expired(last_activity_time):
+    current_time = time.time()
+    elapsed_time = current_time - last_activity_time
+    return elapsed_time > 300
+
 # Login Section
 if selection == "Login":
     st.header("Login")
@@ -73,8 +79,15 @@ if selection == "Login":
             st.success(f'Welcome, {username}!')
             
             # Run shiny.py and display the output here
-            st.markdown(f'[Click here to go to the analysis page](https://tesla-stock-analysis.streamlit.app/)')
+            session_time = time.time()
 
+        # Display the link only if it has not expired
+        if not is_link_expired(session_time):
+            st.markdown(f'[Click here to go to the analysis page](https://tesla-stock-analysis.streamlit.app/)')
+        else:
+            st.warning('Link has expired. Please login again to generate a new link.')
+    else:
+        st.error('Invalid username or password. Please try again.')
 
 
 
