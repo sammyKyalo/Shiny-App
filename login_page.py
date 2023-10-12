@@ -85,7 +85,7 @@ if selection == "Login":
 
             # Display the link only if it has not expired
             if not is_link_expired(session_time):
-                st.markdown(f'[Click here to go to the analysis page](https://telsa-stock-analysis.streamlit.app/)')
+                st.markdown('https://telsa-stock-analysis.streamlit.app/', unsafe_allow_html=True, target="_blank")
             else:
                 st.warning('Link has expired. Please login again to generate a new link.')
         else:
