@@ -208,8 +208,8 @@ st.line_chart(rsi)
 st.markdown('<h1 style="text-align: center; color: #800080;">Buying and Selling Point Signals</h1>', unsafe_allow_html=True)
 st.write("Ensure that you adjust the overbought and oversold levels appropriately")
 # Add trading signals based on RSI
-overbought_level = st.slider('Select Overbought Level', min_value=50, max_value=70, step=1, value=70)
-oversold_level = st.slider('Select Oversold Level', min_value=30, max_value=50, step=1, value=30)
+overbought_level = st.slider('Select Overbought Level', min_value=0, max_value=100, step=1, value=70)
+oversold_level = st.slider('Select Oversold Level', min_value=0, max_value=100, step=1, value=30)
 data['RSI'] = rsi
 data['Buy_Signal'] = data['RSI'] < oversold_level
 data['Sell_Signal'] = data['RSI'] > overbought_level

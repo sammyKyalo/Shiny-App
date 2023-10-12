@@ -61,6 +61,8 @@ def verify_user(username, password):
         return True
     return False
 
+
+
 # Selectbox for Login and Sign Up options
 selection = st.selectbox("Select Option(sign up/login)", ["Login", "Sign Up"])
 
@@ -91,6 +93,7 @@ if selection == "Login":
         else:
             st.warning('Invalid username or password. Please try again or sign up.')
 
+
 # Signup Section
 else:
     st.header("Sign Up")
@@ -100,4 +103,3 @@ else:
     if st.button('Sign Up'):
         create_user(new_username, new_email, new_password)
         st.success(f'Account created for {new_username}! You can now login.')
-
